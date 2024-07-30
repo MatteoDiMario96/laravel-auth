@@ -15,5 +15,7 @@ class Project extends Model
         'name',
         'project_created_at',
         'languages_programming_used',
+        'image_url',
+        'note',
     ];
 }

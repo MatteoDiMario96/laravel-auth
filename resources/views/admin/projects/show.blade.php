@@ -4,6 +4,7 @@
 @section('page-title', 'Info' . ' ' . $project->name)
 
 @section('main-content')
+
 <div class="card text-bg-light">
     <div class="card-header">Project name: {{$project->name}}</div>
         @if (session('edit-project'))

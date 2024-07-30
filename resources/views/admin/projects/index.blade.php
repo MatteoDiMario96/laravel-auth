@@ -8,11 +8,17 @@
 </h1>
 <div>
     <div>
-        @if (@session('deleted-message'))
+        @if (@session('delete-message') )
             <div class="alert alert-success">
-                {{session('deleted-message')}}
+                {{session('delete-message')}}
                 <a href="{{route('admin.projects.trash-index')}}">See the trash backet</a>
             </div>
+        @endif
+        @if (@session('restore-message'))
+        <div class="alert alert-success">
+            {{session('restore-message')}}
+            <a href="{{route('admin.projects.trash-index')}}">See the trash backet</a>
+        </div>
         @endif
     </div>
 </div>

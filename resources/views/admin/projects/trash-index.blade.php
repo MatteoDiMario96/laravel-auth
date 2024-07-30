@@ -12,9 +12,9 @@
 </h1>
 <div>
     <div>
-        @if (@session('deleted-message'))
+        @if (@session('perma-delete-message'))
             <div class="alert alert-success">
-                {{session('deleted-message')}}
+                {{session('delete-message')}}
                 <a href="{{route('admin.projects.index')}}">See the project list</a>
             </div>
 
@@ -29,6 +29,8 @@
             <th scope="col">Name</th>
             <th scope="col">Project created in date :</th>
             <th scope="col">Programming languages used :</th>
+            <th scope="col" class="text-center">Action</th>
+
         </tr>
     </thead>
     <tbody class="table-group-divider">

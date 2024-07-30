@@ -23,12 +23,13 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             //Mettere regole
+            'name' => ['required', 'min:3', 'max:150'],
+            'project_created_at' => ['required'],
+            'languages_programming_used' => ['required', 'min:2', 'max:200'],
+            'image_url' => ['nullable'],
+            'note' => ['max:1000']
 
         ];
     }
 
-    public function messages()
-    {
-        //Mettere messaggi
-    }
 }

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('project_created_at');
             $table->string('languages_programming_used', 250);
             $table->string('image_url', 250)->nullable();
-            $table->text('note');
+            $table->text('note')->nullable();
 
 
             $table->timestamps();
