@@ -12,44 +12,44 @@ class ProjectController extends Controller
 {
     public function index(){
         $projects = Project::all();
-        return view('projects.index', compact('projects'));
+        return view('admin.projects.index', compact('projects'));
     }
     public function show(Project $project){
-        return view('projects.show', compact('project'));
+        return view('admin.projects.show', compact('project'));
     }
     public function create(){
-        return view('project.create');
+        return view('admin.projects.create');
     }
     public function store(StoreProjectRequest $request){
         $data = $request->validated();
         $newProject = new Project($data);
         $newProject->save();
-        return redirect()->view('projects.show', $newProject);
+        return redirect()->view('admin.projects.show', $newProject);
     }
-    public function edit(){
-        return view('project.edit');
+    public function edit(Project $project){
+        return view('admin.projects.edit', $project, compact('project'));
     }
     public function update(UpdateProjectRequest $request, Project $project){
         $data = $request->validated();
         $project->update($data);
-        return redirect()->view('projects.show', $project);
+        return redirect()->view('admin.projects.show', $project)->with('edit-message', $project->name . ' '. 'has been edited with success');
     }
     public function softDeleteIndex(){
         $projects = Project::onlyTrashed()->get();
-        return view('project.trash-index', compact('projects'));
+        return view('admin.projects.trash-index', compact('projects'));
     }
     public function softDelete(Project $project){
         $project->delete();
-        return redirect()->view('projects.index');
+        return redirect()->route('admin.projects.index');
     }
     public function permaDelete(string $id){
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->forceDelete();
-        return redirect()->route('project.trash-index')->with('');
+        return redirect()->route('admin.projects.trash-index')->with('');
     }
     public function restore(string $id){
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->restore();
-        return redirect()->route('project.trash-index')->with('');
+        return redirect()->route('admin.projects.trash-index')->with('');
     }
 }
