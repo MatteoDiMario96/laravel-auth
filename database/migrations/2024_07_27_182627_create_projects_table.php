@@ -15,8 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name', 150);
             $table->date('project_created_at');
-            $table->string('languages_programming_used', 250);
-            $table->string('image_url', 250)->nullable();
             $table->text('note')->nullable();
 
 

@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Guest\ProjectController as GuestProjectController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +32,8 @@ Route::get('/', function () {
 // Route::delete('/projects/{project}/soft-delete',[GuestProjectController::class, 'softDelete'])->name('projects.softDelete');
 // Route::delete('/projects/{project}/perma-delete',[GuestProjectController::class, 'permaDelete'])->name('projects.permaDelete');
 // Route::patch('/projects/{project}/restore',[GuestProjectController::class, 'restore'])->name('projects.restore');
+
+Route::resource('projects', GuestProjectController::class);
 
 
 
